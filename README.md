@@ -58,6 +58,15 @@ sharing computational documents 📓
 
 ### What I learned 🧠
 
+**1. Removing columns from a `DataFrame`**
+
+I didn't see the relevance of the `description` column for data analysis. Therefore
+I opted to delete it using `pop()` and not `del`, just in case a need arises for it.
+
+```python
+  description_column = netflix_titles.pop("description")
+```
+
 ### Continued development 🌱
 
 ### Useful resources 📚
