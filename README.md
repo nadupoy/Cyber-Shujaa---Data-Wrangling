@@ -71,6 +71,8 @@ I opted to delete it using `pop()` and not `del`, just in case a need arises for
 
 ### Useful resources 📚
 
+- Column selection, addition and deletion in [`Pandas`](https://pandas.pydata.org/docs/user_guide/dsintro.html#column-selection-addition-deletion)
+
 ## 🧑🏽‍💻 Author
 
 - LinkedIn - [Grace Sampao](https://www.linkedin.com/in/grace-sampao)
