@@ -77,9 +77,25 @@ Changing the most recent commit message in `Git` is done using the commands:
     git push --force-with-lease origin <branch-name>
   ```
 
-  Amending creates a new commit with a different ID, force pushing overwrites the history on the remote repository.
+  Amending creates a new commit with a different ID, force pushing overwrites the 
+  history on the remote repository.
 
-  `--force-with-lease` is safer than `--force` because it checks if someone else has pushed to the branch in the meantime, preventing accidentally overwriting their work.
+  `--force-with-lease` is safer than `--force` because it checks if someone else 
+  has pushed to the branch in the meantime, preventing accidentally overwriting 
+  their work.
+
+**3. Changing multiple `DataFrame` columns `dtype`**
+
+```python
+  netflix_titles = netflix_titles.astype(
+    {
+      "type": "category",
+      "country": "category",
+      "rating": "category",
+      "listed_in": "category",
+    }
+  )
+```
 
 ### Continued development 🌱
 
@@ -88,6 +104,8 @@ Changing the most recent commit message in `Git` is done using the commands:
 - Column selection, addition and deletion in [`Pandas`](https://pandas.pydata.org/docs/user_guide/dsintro.html#column-selection-addition-deletion)
 
 - Changing a commit message in [`Git`](https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/changing-a-commit-message)
+
+- `Pandas` [API reference](https://pandas.pydata.org/docs/reference/index.html)
 
 ## 🧑🏽‍💻 Author
 
