@@ -67,6 +67,8 @@ I opted to delete it using `pop()` and not `del`, just in case a need arises for
   description_column = netflix_titles.pop("description")
 ```
 
+***N/B: I later on opted to leave it in as it may come in handy in the data analysis stage i.e. in Tableau dashboards when accessing a detailed view of an item.***
+
 **2. Changing a commit message in Git**
 
 Changing the most recent commit message in `Git` is done using the commands:
@@ -95,6 +97,78 @@ Changing the most recent commit message in `Git` is done using the commands:
       "listed_in": "category",
     }
   )
+```
+
+**4. Converting a column in a `DataFrame` to an ordered categorical type with custom ordering**
+
+This was applicable in the `netflix_titles["rating"]` column:
+
+```python
+  from pandas.api.types import CategoricalDtype
+
+  rating_categories = CategoricalDtype(
+    categories=["G", "TV-Y", "TV-G", "TV-Y7", "TV-Y7-FV", "PG", "TV-PG", "PG-13", "TV-14", "R", "TV-MA", "NC-17", "NR", "UR"], ordered=True
+  )
+
+  netflix_titles["rating"].astype(rating_categories)
+```
+
+**5. Selecting a row using a specified value/values from a column**
+
+```python
+  netflix_titles[netflix_titles["rating"] == "66 min"]
+
+  netflix_titles[netflix_titles["rating"] == "74 min"]
+
+  netflix_titles[netflix_titles["rating"] == "84 min"]
+```
+
+**6. Selecting a row using a specified index**
+
+```python
+  netflix_titles.iloc[[5813]]
+```
+
+**7. Accessing & changing a value in a column**
+
+```python
+  netflix_titles.at[5813, "duration"] = "66 min"
+  netflix_titles.at[5813, "rating"] = "UR"
+```
+
+**8. `object` to `datetime64[ns]` `dtype` conversion**
+
+This was applicable in the `netflix_titles["date_added"]` columns e.g *September 16, 2016* 
+to *2016-09-16*:
+
+```python
+  netflix_titles["date_added"] = netflix_titles["date_added"].str.lstrip()
+  netflix_titles["date_added"] = pd.to_datetime(netflix_titles["date_added"], dayfirst=True, format="%B %d, %Y")
+```
+
+**9. Dropping rows with null values in a specified column in the `DataFrame`**
+
+Given the small number of null values in the `netflix_titles["rating"]` and 
+`netflix_titles["date_added"]` columns — 4 and 10 respectively — relative to the 
+size of the `DataFrame`, I opted to drop their respective rows.
+
+```python
+  netflix_titles.dropna(subset=["rating"], inplace=True)
+  netflix_titles.dropna(subset=["date_added"], inplace=True)
+```
+
+**10. Filling null values in categorical `dtypes`**
+
+```python
+  # add "Unknown" to the list of valid categories in the netflix_titles["country"] column:
+  netflix_titles["country"] = netflix_titles["country"].cat.add_categories("Unknown")
+
+  values = {
+    "director": "Unknown",
+    "cast": "Unknown",
+    "country": "Unknown"
+  }
+  netflix_titles.fillna(value=values, inplace=True)
 ```
 
 ### Continued development 🌱
