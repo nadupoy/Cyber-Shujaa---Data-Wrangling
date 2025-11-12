@@ -173,6 +173,8 @@ size of the `DataFrame`, I opted to drop their respective rows.
 
 ### Continued development 🌱
 
+- `DataFrame` manipulation in `Pandas` 🐼
+
 ### Useful resources 📚
 
 - Column selection, addition and deletion in [`Pandas`](https://pandas.pydata.org/docs/user_guide/dsintro.html#column-selection-addition-deletion)
