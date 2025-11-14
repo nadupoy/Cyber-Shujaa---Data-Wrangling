@@ -175,6 +175,11 @@ size of the `DataFrame`, I opted to drop their respective rows.
 
 - `DataFrame` manipulation in `Pandas` 🐼
 
+- Handling entries with multiple categories in a series as was the case with the
+`netflix_titles["country"]` and `netflix_titles["listed_in"]` columns. This was the
+biggest challenge I faced. <br> I am confident that as I develop my `Pandas` skills 
+I will find a solution.
+
 ### Useful resources 📚
 
 - Column selection, addition and deletion in [`Pandas`](https://pandas.pydata.org/docs/user_guide/dsintro.html#column-selection-addition-deletion)
